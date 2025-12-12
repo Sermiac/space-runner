@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Space-Runner"
+run/main_scene="uid://blsx3t0livsf8"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [file_customization]
 
@@ -24,5 +29,6 @@ folder_colors={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
