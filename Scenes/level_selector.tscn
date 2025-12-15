@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt36hhvq1mjmp"]
+
+[ext_resource type="Script" uid="uid://boev7kgffwww1" path="res://Scripts/level_selector.gd" id="1_22lal"]
+
+[node name="level_selector" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_22lal")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 265.0
+offset_right = 1040.0
+offset_bottom = 617.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 50
+columns = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 124.0
+offset_right = 724.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 40
+text = "Select the level"

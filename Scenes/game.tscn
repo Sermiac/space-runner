@@ -1,51 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://hai6fh446urj"]
+[gd_scene load_steps=3 format=3 uid="uid://hai6fh446urj"]
 
 [ext_resource type="Script" uid="uid://cin3mhqikbbs5" path="res://Scripts/game.gd" id="1_ebmjs"]
-[ext_resource type="Texture2D" uid="uid://c1n1hb451anww" path="res://icon.svg" id="2_qxrlw"]
-[ext_resource type="Script" uid="uid://bt8e2r2cmcsog" path="res://Scenes/character_body_2d.gd" id="3_wrm1d"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrm1d"]
-radius = 65.0
-height = 130.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
-size = Vector2(124.676544, 20)
+[ext_resource type="PackedScene" uid="uid://bt36hhvq1mjmp" path="res://Scenes/level_selector.tscn" id="2_qxrlw"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ebmjs")
 
-[node name="level_1" type="Node" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="level_1"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 offset_left = 1013.0
 offset_top = 57.0
 offset_right = 1067.0
 offset_bottom = 120.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="level_1/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="exit_button" type="Button" parent="level_1/MarginContainer/HBoxContainer"]
+[node name="exit_button" type="Button" parent="CanvasLayer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "<<"
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="level_1"]
-position = Vector2(262, 132)
-script = ExtResource("3_wrm1d")
+[node name="level_selector" parent="." instance=ExtResource("2_qxrlw")]
 
-[node name="Sprite2D" type="Sprite2D" parent="level_1/CharacterBody2D"]
-texture = ExtResource("2_qxrlw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="level_1/CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_wrm1d")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="level_1"]
-position = Vector2(575, 543)
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="level_1/RigidBody2D"]
-scale = Vector2(7.988671, 5.7710443)
-shape = SubResource("RectangleShape2D_3dryh")
-
-[connection signal="pressed" from="level_1/MarginContainer/HBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
