@@ -1,31 +1,151 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6ku0f6yte71q"]
+[gd_scene load_steps=11 format=3 uid="uid://b6ku0f6yte71q"]
 
 [ext_resource type="Script" uid="uid://bt8e2r2cmcsog" path="res://Scripts/character_body_2d.gd" id="1_8ffim"]
-[ext_resource type="Texture2D" uid="uid://c1n1hb451anww" path="res://icon.svg" id="2_xfk5q"]
+[ext_resource type="Texture2D" uid="uid://cm2cp820dy2vj" path="res://Assets/Images/Fondoprueba.png" id="1_yffda"]
+[ext_resource type="Texture2D" uid="uid://bq28gn13vfr3k" path="res://Assets/Images/player/Space Cat - Frame 1.png" id="4_qyddi"]
+[ext_resource type="Texture2D" uid="uid://c56robuhhfpda" path="res://Assets/Images/tiles/tile-sheet.png" id="5_0lml3"]
+[ext_resource type="Texture2D" uid="uid://6dn4bef7kiim" path="res://Assets/Images/player/Space Cat - Frame 1.1 (Ojo Cerrado).png" id="5_qek6e"]
+[ext_resource type="Texture2D" uid="uid://b6d1s7eibs22f" path="res://Assets/Images/player/Space Cat - Frame (Salto).png" id="6_tlryv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyddi"]
+texture = ExtResource("5_0lml3")
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrain = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.5648437, -8, 8, -8, 8, 8, -6.564844, 8)
+4:0/0/terrains_peering_bit/right_side = 0
+4:0/0/terrains_peering_bit/bottom_right_corner = 0
+4:0/0/terrains_peering_bit/bottom_side = 0
+4:0/0/terrains_peering_bit/top_side = 0
+4:0/0/terrains_peering_bit/top_right_corner = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+5:0/0/terrain = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0/terrains_peering_bit/right_side = 0
+5:0/0/terrains_peering_bit/bottom_right_corner = 0
+5:0/0/terrains_peering_bit/bottom_side = 0
+5:0/0/terrains_peering_bit/bottom_left_corner = 0
+5:0/0/terrains_peering_bit/left_side = 0
+5:0/0/terrains_peering_bit/top_left_corner = 0
+5:0/0/terrains_peering_bit/top_side = 0
+5:0/0/terrains_peering_bit/top_right_corner = 0
+6:0/0 = 0
+6:0/0/terrain_set = 0
+6:0/0/terrain = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0/terrains_peering_bit/right_side = 0
+6:0/0/terrains_peering_bit/bottom_right_corner = 0
+6:0/0/terrains_peering_bit/bottom_side = 0
+6:0/0/terrains_peering_bit/bottom_left_corner = 0
+6:0/0/terrains_peering_bit/left_side = 0
+6:0/0/terrains_peering_bit/top_left_corner = 0
+6:0/0/terrains_peering_bit/top_side = 0
+6:0/0/terrains_peering_bit/top_right_corner = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 6.564843, -8, 6.7447023, 8, -8, 8)
+3:0/0/terrains_peering_bit/bottom_side = 0
+3:0/0/terrains_peering_bit/bottom_left_corner = 0
+3:0/0/terrains_peering_bit/left_side = 0
+3:0/0/terrains_peering_bit/top_left_corner = 0
+3:0/0/terrains_peering_bit/top_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+
+[sub_resource type="TileSet" id="TileSet_qek6e"]
+physics_layer_0/collision_layer = 2
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/2 = SubResource("TileSetAtlasSource_qyddi")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dsuda"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qyddi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qyddi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qyddi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qek6e")
+}],
+"loop": true,
+"name": &"player_idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tlryv")
+}],
+"loop": true,
+"name": &"player_jump",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrm1d"]
-radius = 65.0
-height = 130.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
-size = Vector2(124.676544, 20)
+radius = 25.0
+height = 156.0
 
 [node name="level_1" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(262, 132)
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_offset = Vector2(210, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(581, 223)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_yffda")
+
+[node name="floor" type="Node2D" parent="."]
+position = Vector2(0, 5)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="floor"]
+position = Vector2(575, 650)
+scale = Vector2(4.5, 4.5)
+tile_set = SubResource("TileSet_qek6e")
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(564, 371)
+collision_mask = 2
 script = ExtResource("1_8ffim")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_xfk5q")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_dsuda")
+animation = &"player_idle"
+frame_progress = 0.45961836
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 shape = SubResource("CapsuleShape2D_wrm1d")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(575, 543)
-freeze = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-scale = Vector2(7.988671, 5.7710443)
-shape = SubResource("RectangleShape2D_3dryh")
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(0, -108)
