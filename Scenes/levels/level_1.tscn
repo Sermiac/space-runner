@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6ku0f6yte71q"]
+[gd_scene load_steps=19 format=4 uid="uid://b6ku0f6yte71q"]
 
 [ext_resource type="Script" uid="uid://bt8e2r2cmcsog" path="res://Scripts/character_body_2d.gd" id="1_8ffim"]
 [ext_resource type="Texture2D" uid="uid://cm2cp820dy2vj" path="res://Assets/Images/Fondoprueba.png" id="1_yffda"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c56robuhhfpda" path="res://Assets/Images/tiles/tile-sheet.png" id="5_0lml3"]
 [ext_resource type="Texture2D" uid="uid://6dn4bef7kiim" path="res://Assets/Images/player/Space Cat - Frame 1.1 (Ojo Cerrado).png" id="5_qek6e"]
 [ext_resource type="Texture2D" uid="uid://b6d1s7eibs22f" path="res://Assets/Images/player/Space Cat - Frame (Salto).png" id="6_tlryv"]
+[ext_resource type="Texture2D" uid="uid://vfgoxe5y02sv" path="res://Assets/Images/oxigeno.png" id="7_tlryv"]
+[ext_resource type="Texture2D" uid="uid://qad0b1uxlay4" path="res://Assets/Images/Combustible.png" id="8_dsuda"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyddi"]
 texture = ExtResource("5_0lml3")
@@ -115,6 +117,24 @@ animations = [{
 radius = 25.0
 height = 156.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qyddi"]
+bg_color = Color(0, 0, 0, 0.6156863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qek6e"]
+bg_color = Color(0.3816539, 0.62007165, 0.8530984, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlryv"]
+bg_color = Color(0, 0, 0, 0.6156863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsuda"]
+bg_color = Color(0.9674435, 0, 0.23777837, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5b24"]
+size = Vector2(72, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sskdo"]
+size = Vector2(72, 130)
+
 [node name="level_1" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
@@ -131,10 +151,11 @@ position = Vector2(0, 5)
 [node name="TileMapLayer" type="TileMapLayer" parent="floor"]
 position = Vector2(575, 650)
 scale = Vector2(4.5, 4.5)
+tile_map_data = PackedByteArray("AAD///3/AgABAAAAAAAAAP3/AgABAAAAAAABAP3/AgABAAAAAAD+//3/AgABAAAAAAD9//3/AgABAAAAAAD8//3/AgABAAAAAAACAP3/AgABAAAAAAACAP7/AgAGAAAAAAABAP7/AgAGAAAAAAAAAP7/AgAGAAAAAAD///7/AgAGAAAAAAD+//7/AgAGAAAAAAD9//7/AgAGAAAAAAADAP7/AgAFAAAAAAADAP3/AgABAAAAAAD8//7/AgAGAAAAAAD7//7/AgAFAAAAAAD7//3/AgABAAAAAAAIAP//AgAFAAAAAAAIAP7/AgAFAAAAAAAIAP3/AgABAAAAAAAHAP//AgAFAAAAAAAHAP7/AgAGAAAAAAAHAP3/AgABAAAAAAAGAP//AgAFAAAAAAAGAP7/AgAGAAAAAAAGAP3/AgABAAAAAAAFAP//AgAGAAAAAAAFAP7/AgAFAAAAAAAFAP3/AgABAAAAAAAEAP//AgAGAAAAAAAEAP7/AgAGAAAAAAAEAP3/AgABAAAAAAADAP//AgAGAAAAAAACAP//AgAGAAAAAAABAP//AgAGAAAAAAAAAP//AgAFAAAAAAD/////AgAFAAAAAAD+////AgAGAAAAAAD9////AgAFAAAAAAD8////AgAFAAAAAAD7////AgAFAAAAAAD6////AgAFAAAAAAD6//7/AgAGAAAAAAD6//3/AgABAAAAAAD5////AgAFAAAAAAD5//7/AgAGAAAAAAD5//3/AgABAAAAAAD4////AgAFAAAAAAD4//7/AgAGAAAAAAD4//3/AgABAAAAAAD3////AgAEAAAAAAD3//7/AgAEAAAAAAD3//3/AgAAAAAAAAANAP//AgAGAAAAAAANAP7/AgAGAAAAAAANAP3/AgABAAAAAAAMAP//AgAFAAAAAAAMAP7/AgAFAAAAAAAMAP3/AgABAAAAAAALAP//AgAGAAAAAAALAP7/AgAFAAAAAAALAP3/AgABAAAAAAAKAP//AgAFAAAAAAAKAP7/AgAGAAAAAAAKAP3/AgABAAAAAAAJAP//AgAFAAAAAAAJAP7/AgAFAAAAAAAJAP3/AgABAAAAAAAOAP7/AgAFAAAAAAAOAP3/AgABAAAAAAAQAP3/AgAGAAAAAAAQAPz/AgAGAAAAAAAPAP3/AgAFAAAAAAAPAPz/AgABAAAAAAAQAP//AgAGAAAAAAAQAP7/AgAFAAAAAAAPAP//AgAFAAAAAAAPAP7/AgAGAAAAAAAOAP//AgAGAAAAAAASAP7/AgAGAAAAAAASAP3/AgAGAAAAAAASAPz/AgAGAAAAAAASAPv/AgADAAAAAAASAPr/AgACAAAAAAARAP7/AgAFAAAAAAARAP3/AgAGAAAAAAARAPz/AgAGAAAAAAARAPv/AgAGAAAAAAARAPr/AgABAAAAAAAQAPv/AgAFAAAAAAAQAPr/AgABAAAAAAATAP//AgAFAAAAAAATAP7/AgAFAAAAAAATAP3/AgAFAAAAAAASAP//AgAFAAAAAAARAP//AgAFAAAAAAATAPz/AgACAAAAAAAVAP//AgAFAAAAAAAVAP7/AgAFAAAAAAAVAP3/AgABAAAAAAAUAP//AgAGAAAAAAAUAP7/AgAFAAAAAAAUAP3/AgABAAAAAAAaAP//AgAFAAAAAAAaAP7/AgAGAAAAAAAaAP3/AgABAAAAAAAZAP//AgAGAAAAAAAZAP7/AgAFAAAAAAAZAP3/AgABAAAAAAAYAP//AgAGAAAAAAAYAP7/AgAFAAAAAAAYAP3/AgABAAAAAAAXAP//AgAGAAAAAAAXAP7/AgAFAAAAAAAXAP3/AgABAAAAAAAWAP//AgAFAAAAAAAWAP7/AgAFAAAAAAAWAP3/AgABAAAAAAAlAP//AgADAAAAAAAlAP7/AgADAAAAAAAlAP3/AgACAAAAAAAkAP//AgAFAAAAAAAkAP7/AgAFAAAAAAAkAP3/AgABAAAAAAAjAP//AgAGAAAAAAAjAP7/AgAGAAAAAAAjAP3/AgABAAAAAAAiAP//AgAGAAAAAAAiAP7/AgAGAAAAAAAiAP3/AgABAAAAAAAhAP//AgAGAAAAAAAhAP7/AgAGAAAAAAAhAP3/AgABAAAAAAAgAP//AgAFAAAAAAAgAP7/AgAGAAAAAAAgAP3/AgABAAAAAAAfAP//AgAGAAAAAAAfAP7/AgAGAAAAAAAfAP3/AgABAAAAAAAeAP//AgAGAAAAAAAeAP7/AgAGAAAAAAAeAP3/AgABAAAAAAAdAP//AgAFAAAAAAAdAP7/AgAFAAAAAAAdAP3/AgABAAAAAAAcAP//AgAFAAAAAAAcAP7/AgAFAAAAAAAcAP3/AgABAAAAAAAbAP//AgAGAAAAAAAbAP7/AgAGAAAAAAAbAP3/AgABAAAAAAAoAPn/AgACAAAAAAAnAPn/AgABAAAAAAAmAPn/AgABAAAAAAAlAPn/AgABAAAAAAAkAPn/AgABAAAAAAAjAPn/AgABAAAAAAAiAPn/AgABAAAAAAAhAPn/AgAAAAAAAAAkAPr/AgADAAAAAAAjAPr/AgAFAAAAAAAiAPr/AgAGAAAAAAAhAPr/AgAGAAAAAAAgAPr/AgABAAAAAAAfAPr/AgAAAAAAAAA=")
 tile_set = SubResource("TileSet_qek6e")
 
 [node name="player" type="CharacterBody2D" parent="."]
-position = Vector2(564, 371)
+position = Vector2(564, 341)
 collision_mask = 2
 script = ExtResource("1_8ffim")
 
@@ -149,3 +170,92 @@ shape = SubResource("CapsuleShape2D_wrm1d")
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -108)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -108)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="O2_bar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 896.0
+offset_top = 13.0
+offset_right = 923.0
+offset_bottom = 85.0
+theme_override_styles/background = SubResource("StyleBoxFlat_qyddi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qek6e")
+value = 80.0
+fill_mode = 3
+show_percentage = false
+
+[node name="O2" type="Label" parent="CanvasLayer"]
+offset_left = 831.0
+offset_top = 19.0
+offset_right = 885.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 40
+text = "O2"
+
+[node name="fuel_bar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 727.0
+offset_top = 13.0
+offset_right = 754.0
+offset_bottom = 85.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tlryv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dsuda")
+value = 5.0
+fill_mode = 3
+show_percentage = false
+
+[node name="fuel" type="Label" parent="CanvasLayer"]
+offset_left = 612.0
+offset_top = 19.0
+offset_right = 707.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 40
+text = "Fuel"
+
+[node name="bottles" type="Node2D" parent="."]
+
+[node name="oxygen_0" type="Sprite2D" parent="bottles"]
+position = Vector2(1027, 332)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("7_tlryv")
+
+[node name="oxygen_1" type="Sprite2D" parent="bottles"]
+position = Vector2(2596, 332)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("7_tlryv")
+
+[node name="oxygen_2" type="Sprite2D" parent="bottles"]
+position = Vector2(2173, 332)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("7_tlryv")
+
+[node name="fuel_0" type="Sprite2D" parent="bottles"]
+position = Vector2(1829, 101)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("8_dsuda")
+
+[node name="oxygen" type="StaticBody2D" parent="."]
+position = Vector2(930, 788)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="oxygen"]
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("7_tlryv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oxygen"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_s5b24")
+
+[node name="fuel" type="StaticBody2D" parent="."]
+position = Vector2(1074, 786)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="fuel"]
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("8_dsuda")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fuel"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_sskdo")

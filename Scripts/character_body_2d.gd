@@ -3,14 +3,15 @@ extends CharacterBody2D
 @onready var game_ctrl
 @onready var animation = $AnimatedSprite2D
 var speed = 200
-var gravity = 900
-@export var jump_force := 500.0
+var gravity = 400 #900 normal
+@export var jump_force := 620.0
+var collided
 
 
-func _ready() -> void:
+func start_animation():
 	animation.play("player_idle")
 
-func _physics_process(delta):
+func movement(delta):
 	speed = game_ctrl.SPEED * 80
 	
 	if not is_on_floor():
@@ -25,3 +26,8 @@ func _physics_process(delta):
 	velocity.x = speed
 
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider().name == "TileMapLayer":
+			return
+		collided = collision.get_collider()
