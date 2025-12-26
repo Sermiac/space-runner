@@ -12,7 +12,8 @@ var p_init
 var ba_init
 var oxygen
 var fuel
-var bottles
+var props
+var oxygen_consumption
 
 func _on_exit_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
@@ -29,12 +30,14 @@ func _physics_process(delta: float) -> void:
 		var ba_pos = background.global_position 
 		# PLAYER MOVEMENT
 		player.movement(delta)
+		"""
 		if end:
 			return
-		if ba_pos.y >= 250.0 and !end:
+		if p_pos.y >= 420.0 and !end:
 			level.get_node("Camera2D").global_position = player.get_node("Camera2D").global_position
 			player.get_node("Camera2D").enabled = false
 			end = true
+		"""
 		# BACKGROUND MOVEMENT
 		background.global_position.x = (p_pos.x - p_init.x) + ba_init.x
 		background.global_position.y = (p_pos.y - p_init.y) / 2 + ba_init.y
@@ -45,7 +48,6 @@ func _physics_process(delta: float) -> void:
 			level_canvas[2].value += 10
 			player.collided.call_deferred("queue_free")
 		
-# Miguel acaba de darse cuenta que crear niveles completos aleatoriamente no era la idea >:(
 # Todo el codigo en comillas es codigo de generacion automatica de terreno
 """
 var active_platforms = []
@@ -73,15 +75,18 @@ func level_selected(btn_name):
 	level_canvas = get_node("%s/CanvasLayer" % btn_name).get_children()
 	oxygen = get_node("%s/oxygen" % btn_name)
 	fuel = get_node("%s/fuel" % btn_name)
-	bottles = get_node("%s/bottles" % btn_name)
+	props = get_node("%s/props" % btn_name)
 	level = get_node("%s" % btn_name)
 	# set nodes properties
+	level.game_ctrl = self
 	player.game_ctrl = self
 	player.start_animation()
+	level_canvas[0].max_value = level.max_oxygen
 	# get node properties
 	p_init = player.global_position
 	ba_init = background.position
 	background.global_position = (p_init - p_init) + ba_init
+	oxygen_consumption = level.oxygen_consumption
 
 	"""
 	init_tiles()
@@ -93,12 +98,12 @@ func level_selected(btn_name):
 	$Timer2.start()
 	
 func init_bottles():
-	bottles.visible = false
-	for bottle in bottles.get_children():
-		var original_node = NodePath(bottle.name.split("_")[0])
+	props.visible = false
+	for prop in props.get_children():
+		var original_node = NodePath(prop.name.split("_")[0])
 		var copy = level.get_node(original_node).duplicate()
-		copy.position = bottle.position
-		copy.name = bottle.name
+		copy.position = prop.position
+		copy.name = prop.name
 		level.add_child(copy)
 
 
@@ -152,7 +157,7 @@ func spd_controller(speed):
 
 # Clocks
 func _on_timer_timeout() -> void:
-	level_canvas[0].value -= 4.0
+	level_canvas[0].value -= oxygen_consumption
 	#update_tiles()
 """
 func _on_timer_2_timeout() -> void:

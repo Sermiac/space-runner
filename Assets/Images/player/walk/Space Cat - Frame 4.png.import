@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6dn4bef7kiim"
-path="res://.godot/imported/Space Cat - Frame 1.1 (Ojo Cerrado).png-07b5f802ba0a460325620e8ae80a3a04.ctex"
+uid="uid://bqfvwxs5dlf1s"
+path="res://.godot/imported/Space Cat - Frame 4.png-b9563c800f8ecaa3b43d8412ccffffe3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/player/Space Cat - Frame 1.1 (Ojo Cerrado).png"
-dest_files=["res://.godot/imported/Space Cat - Frame 1.1 (Ojo Cerrado).png-07b5f802ba0a460325620e8ae80a3a04.ctex"]
+source_file="res://Assets/Images/player/walk/Space Cat - Frame 4.png"
+dest_files=["res://.godot/imported/Space Cat - Frame 4.png-b9563c800f8ecaa3b43d8412ccffffe3.ctex"]
 
 [params]
 

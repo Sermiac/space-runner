@@ -34,5 +34,4 @@ func on_level_button_pressed(btn_name: StringName):
 	var level_scene = load(level).instantiate()
 	game_ctrl.add_child(level_scene)
 	game_ctrl.level_selected(btn_name)
-	#game_ctrl.level = btn_name
 	self.call_deferred("queue_free")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6d1s7eibs22f"
-path="res://.godot/imported/Space Cat - Frame (Salto).png-fb4b8481e2ec6f10df4016aef4750970.ctex"
+uid="uid://8hjbqxvug0d6"
+path="res://.godot/imported/Space Cat - Frame 13 - Walk 9.png-0e4e0b05b7e7a51b4e45369a96e25c57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/player/Space Cat - Frame (Salto).png"
-dest_files=["res://.godot/imported/Space Cat - Frame (Salto).png-fb4b8481e2ec6f10df4016aef4750970.ctex"]
+source_file="res://Assets/Images/player/walking/Space Cat - Frame 13 - Walk 9.png"
+dest_files=["res://.godot/imported/Space Cat - Frame 13 - Walk 9.png-0e4e0b05b7e7a51b4e45369a96e25c57.ctex"]
 
 [params]
 
