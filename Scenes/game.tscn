@@ -28,6 +28,10 @@ text = "<<"
 
 [node name="Timer2" type="Timer" parent="."]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="PlayerStream" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

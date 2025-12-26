@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var level = get_parent()
 @onready var game_ctrl
+var wlk_snd
 
 @onready var player_anim = $AnimatedSprite2D
 var speed
@@ -13,17 +14,18 @@ var collided
 func start_animation():
 	player_anim.play("player_idle")
 
-
 func movement(delta):
 	if !speed:
 		speed = level.speed
+		wlk_snd = game_ctrl.get_node("PlayerStream")
 	
 	# JUMP logic
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		player_anims_manager("player_jump")
+		wlk_snd.stop()
 		
-	else: 
+	else:
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = -jump_force
 	
@@ -31,10 +33,14 @@ func movement(delta):
 	var dir = Input.get_axis("ui_left", "ui_right")
 	if dir == 0.0 and is_on_floor():
 		player_anims_manager("player_idle")
+		wlk_snd.stop()
 		
 	elif dir == -1:
 		player_anim.flip_h = true
 		if is_on_floor():
+			if wlk_snd.playing == false:
+				wlk_snd.stream = load("res://Assets/Sounds/player/walking/walking_3.mp3")
+				wlk_snd.play()
 			if !walk_mode:
 				player_anims_manager("player_walk")
 			if walk_mode:
@@ -43,6 +49,10 @@ func movement(delta):
 	elif dir == 1:
 		player_anim.flip_h = false
 		if is_on_floor():
+			if wlk_snd.playing == false:
+				var num = randi_range(1, 3)
+				wlk_snd.stream = load("res://Assets/Sounds/player/walking/walking_%s.mp3" % num)
+				wlk_snd.play()
 			if !walk_mode:
 				player_anims_manager("player_walk")
 			if walk_mode:

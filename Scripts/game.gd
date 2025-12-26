@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 			return
 		var p_pos = player.global_position
-		var ba_pos = background.global_position 
+		var ba_pos = background.global_position
 		# PLAYER MOVEMENT
 		player.movement(delta)
 		"""
@@ -44,9 +44,13 @@ func _physics_process(delta: float) -> void:
 		if player.collided and player.collided.name.contains("oxygen"):
 			level_canvas[0].value += 40
 			player.collided.call_deferred("queue_free")
+			$AudioStreamPlayer.stream = load("res://Assets/Sounds/oxygen/oxigeno.mp3")
+			$AudioStreamPlayer.play()
 		if player.collided and player.collided.name.contains("fuel"):
 			level_canvas[2].value += 10
 			player.collided.call_deferred("queue_free")
+			$AudioStreamPlayer.stream = load("res://Assets/Sounds/oxygen/fuel.mp3")
+			$AudioStreamPlayer.play()
 		
 # Todo el codigo en comillas es codigo de generacion automatica de terreno
 """
