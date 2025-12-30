@@ -436,7 +436,7 @@ offset_right = 754.0
 offset_bottom = 85.0
 theme_override_styles/background = SubResource("StyleBoxFlat_tlryv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dsuda")
-value = 10.0
+value = 50.0
 fill_mode = 3
 show_percentage = false
 
@@ -487,6 +487,26 @@ texture = ExtResource("7_tlryv")
 
 [node name="fuel_0" type="Sprite2D" parent="props"]
 position = Vector2(1829, 101)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("8_dsuda")
+
+[node name="fuel_1" type="Sprite2D" parent="props"]
+position = Vector2(1500, 337)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("8_dsuda")
+
+[node name="fuel_2" type="Sprite2D" parent="props"]
+position = Vector2(2387, 329)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("8_dsuda")
+
+[node name="fuel_3" type="Sprite2D" parent="props"]
+position = Vector2(2171, -101)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("8_dsuda")
+
+[node name="fuel_4" type="Sprite2D" parent="props"]
+position = Vector2(2874, 111)
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("8_dsuda")
 

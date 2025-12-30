@@ -193,6 +193,13 @@ func handle_ship(area):
 		await get_tree().create_timer(2.0).timeout
 		level_canvas[4].text = ""
 	elif level_canvas[2].value >= 99:
-		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		"""
+		level.call_deferred("queue_free")
+		var level_selector = preload("res://Scenes/level_selector.tscn").instantiate()
+		$Timer.stop(); $Timer2.stop()
+		add_child(level_selector)
+		"""
+		get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
+
 func handle_enemy(area):
 	print(area)
