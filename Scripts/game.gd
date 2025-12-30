@@ -41,17 +41,8 @@ func _physics_process(delta: float) -> void:
 		# BACKGROUND MOVEMENT
 		background.global_position.x = (p_pos.x - p_init.x) + ba_init.x
 		background.global_position.y = (p_pos.y - p_init.y) / 2 + ba_init.y
-		if player.collided and player.collided.name.contains("oxygen"):
-			level_canvas[0].value += 40
-			player.collided.call_deferred("queue_free")
-			$AudioStreamPlayer.stream = load("res://Assets/Sounds/oxygen/oxigeno.mp3")
-			$AudioStreamPlayer.play()
-		if player.collided and player.collided.name.contains("fuel"):
-			level_canvas[2].value += 10
-			player.collided.call_deferred("queue_free")
-			$AudioStreamPlayer.stream = load("res://Assets/Sounds/oxygen/fuel.mp3")
-			$AudioStreamPlayer.play()
-		
+
+
 # Todo el codigo en comillas es codigo de generacion automatica de terreno
 """
 var active_platforms = []
@@ -95,19 +86,20 @@ func level_selected(btn_name):
 	"""
 	init_tiles()
 	"""
-	init_bottles()
+	init_props()
 	
 	spd_controller(SPEED)
 	$Timer.start()
 	$Timer2.start()
-	
-func init_bottles():
+
+func init_props():
 	props.visible = false
 	for prop in props.get_children():
 		var original_node = NodePath(prop.name.split("_")[0])
 		var copy = level.get_node(original_node).duplicate()
 		copy.position = prop.position
 		copy.name = prop.name
+		copy.connect("body_entered", Callable(self, "player_entered_area").bind(copy))
 		level.add_child(copy)
 
 
@@ -167,3 +159,40 @@ func _on_timer_timeout() -> void:
 func _on_timer_2_timeout() -> void:
 	create_tile_platforms()
 """
+
+
+func player_entered_area(body, area):
+	if body.name != "player":
+		return
+	
+	if area.is_in_group("bottle"):
+		handle_bottle(area)
+	elif area.is_in_group("enemy"):
+		handle_enemy(area)
+	elif area.is_in_group("ship"):
+		handle_ship(area)
+
+func handle_bottle(area):
+	var bottle_vals = {"oxygen":40, "fuel":10}
+	var bottle_name = area.name.split("_",1)[0]
+	
+	var num
+	for obj_indx in range(level_canvas.size()):
+		var search = bottle_name + "_" + "bar"
+		if level_canvas[obj_indx].name == search:
+			num = obj_indx
+			
+	level_canvas[num].value += bottle_vals[bottle_name]
+	$AudioStreamPlayer.stream = load("res://Assets/Sounds/bottles/%s.mp3" % bottle_name)
+	$AudioStreamPlayer.play()
+	area.call_deferred("queue_free")
+	
+func handle_ship(area):
+	if level_canvas[2].value <= 99:
+		level_canvas[4].text = "NOT ENOUGH FUEL!!"
+		await get_tree().create_timer(2.0).timeout
+		level_canvas[4].text = ""
+	elif level_canvas[2].value >= 99:
+		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+func handle_enemy(area):
+	print(area)

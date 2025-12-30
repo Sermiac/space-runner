@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3txr86dxh3qd"
-path="res://.godot/imported/Space Cat - Frame 7 - Walk 3.png-7af1a2285016c757bc4a7a3c0e34c2df.ctex"
+uid="uid://ck7o5kf77ptgi"
+path="res://.godot/imported/Space Cat - Idle - sheet.png-da457280ff47421480694ab9896a3e3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/player/walking/Space Cat - Frame 7 - Walk 3.png"
-dest_files=["res://.godot/imported/Space Cat - Frame 7 - Walk 3.png-7af1a2285016c757bc4a7a3c0e34c2df.ctex"]
+source_file="res://Assets/Images/player/idle/Space Cat - Idle - sheet.png"
+dest_files=["res://.godot/imported/Space Cat - Idle - sheet.png-da457280ff47421480694ab9896a3e3b.ctex"]
 
 [params]
 

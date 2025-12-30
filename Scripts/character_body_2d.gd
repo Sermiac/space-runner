@@ -39,7 +39,8 @@ func movement(delta):
 		player_anim.flip_h = true
 		if is_on_floor():
 			if wlk_snd.playing == false:
-				wlk_snd.stream = load("res://Assets/Sounds/player/walking/walking_3.mp3")
+				var num = 1
+				wlk_snd.stream = load("res://Assets/Sounds/player/walking/walking_%s.mp3" % num)
 				wlk_snd.play()
 			if !walk_mode:
 				player_anims_manager("player_walk")
@@ -50,7 +51,7 @@ func movement(delta):
 		player_anim.flip_h = false
 		if is_on_floor():
 			if wlk_snd.playing == false:
-				var num = randi_range(1, 3)
+				var num = 1
 				wlk_snd.stream = load("res://Assets/Sounds/player/walking/walking_%s.mp3" % num)
 				wlk_snd.play()
 			if !walk_mode:
@@ -62,6 +63,7 @@ func movement(delta):
 
 	move_and_slide()
 	# Get collisions with objs aside from tilemap
+	# NOT USED AT THE MOMENT
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision.get_collider().name == "TileMapLayer":
@@ -79,7 +81,6 @@ func player_anims_manager(anim):
 		
 	if anim == "player_walk" and !walk_mode:
 		player_anim_walking(anim)
-		walk_mode = true
 		
 	if player_anim.animation == anim:
 		return
@@ -91,12 +92,14 @@ func player_anim_walking(anim = null):
 		# Wait walk animation to finish
 		var frames = player_anim.sprite_frames
 		var duration = frames.get_frame_count(anim) / frames.get_animation_speed(anim)
-		await get_tree().create_timer(duration).timeout
+		# CORRECTING CALCULATION BY 0.01
+		await get_tree().create_timer(duration-0.01).timeout
 	
 		if anim != player_anim.animation:
 			return
 		# Walking animation loop
 		player_anim.play("player_walking")
+		walk_mode = true
 		
 	if walk_mode:
 		var anim_name = player_anim.animation
