@@ -22,8 +22,11 @@ func movement(delta):
 	# JUMP logic
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		player_anims_manager("player_jump")
-		wlk_snd.stop()
+		if velocity.y <= 0.0:
+			player_anims_manager("player_jump")
+			wlk_snd.stop()
+		else:
+			player_anims_manager("player_fall")
 		
 	else:
 		if Input.is_action_just_pressed("jump"):

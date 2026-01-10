@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://blsx3t0livsf8"]
+[gd_scene load_steps=3 format=3 uid="uid://blsx3t0livsf8"]
 
 [ext_resource type="Script" uid="uid://b41jup8iynip" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="Script" uid="uid://eh7xc2jclakq" path="res://Scripts/options.gd" id="2_48xlc"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -38,5 +39,38 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Exit"
 
+[node name="options" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_48xlc")
+
+[node name="MarginContainer" type="MarginContainer" parent="options"]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 157.0
+offset_right = 748.0
+offset_bottom = 220.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options/MarginContainer"]
+layout_mode = 2
+
+[node name="music_button" type="Button" parent="options/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Music"
+
+[node name="Label" type="Label" parent="options"]
+layout_mode = 0
+offset_left = 781.0
+offset_top = 71.0
+offset_right = 934.0
+offset_bottom = 126.0
+theme_override_font_sizes/font_size = 40
+text = "Options"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/options_button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="options/MarginContainer/VBoxContainer/music_button" to="options" method="_on_music_button_pressed"]
