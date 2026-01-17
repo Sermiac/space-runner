@@ -29,5 +29,11 @@ func movement(delta):
 		die()
 		time = 0.0
 
+func kill():
+	find_parent("Game").p_receive_damage()
+
+func player_collided():
+	kill()
+
 func die():
 	self.call_deferred("queue_free")

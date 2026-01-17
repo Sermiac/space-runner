@@ -35,3 +35,9 @@ func shoot(delta):
 		bullet.game_speed = game_speed
 		get_parent().add_child(bullet)
 		time = 0.0
+
+func kill():
+	find_parent("Game").p_receive_damage()
+
+func player_collided():
+	kill()

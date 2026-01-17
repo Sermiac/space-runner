@@ -108,13 +108,9 @@ func handle_ship(area):
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
 
 func handle_enemy(area):
-	if area.name.containsn("worm"):
-		area.kill()
-		area.activate()
-		return
-		
-	p_receive_damage()
-	
+	area.player_collided()
+
+
 func handle_terrain(area, body):
 	if "bullet" in area.get_groups():
 		area.terrain = body
