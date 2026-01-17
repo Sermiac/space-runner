@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnqt05jcsfklg"
-path="res://.godot/imported/Space Cat - Jump - 03 - sheet.png-97f9bc10e6a112616bbe423a7b40cc30.ctex"
+uid="uid://bc5bq1lcorm00"
+path="res://.godot/imported/Asteroide2.png-5822e8dda9514e944c8a045c799428c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/player/land/Space Cat - Jump - 03 - sheet.png"
-dest_files=["res://.godot/imported/Space Cat - Jump - 03 - sheet.png-97f9bc10e6a112616bbe423a7b40cc30.ctex"]
+source_file="res://Assets/Images/background/Asteroide2.png"
+dest_files=["res://.godot/imported/Asteroide2.png-5822e8dda9514e944c8a045c799428c9.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbwxpvlrduhi0"
-path="res://.godot/imported/Space Cat - Jump - 02 - sheet.png-e2c0788de39b96ce5db004568be1e785.ctex"
+uid="uid://ck7o5kf77ptgi"
+path="res://.godot/imported/Space Cat - Idle - sheet.png-1079d469e7e4d12b865ae2b319185651.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/player/fall/Space Cat - Jump - 02 - sheet.png"
-dest_files=["res://.godot/imported/Space Cat - Jump - 02 - sheet.png-e2c0788de39b96ce5db004568be1e785.ctex"]
+source_file="res://Assets/Animations/player/idle/Space Cat - Idle - sheet.png"
+dest_files=["res://.godot/imported/Space Cat - Idle - sheet.png-1079d469e7e4d12b865ae2b319185651.ctex"]
 
 [params]
 

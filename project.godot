@@ -32,6 +32,14 @@ folder_colors={
 "res://Scripts/": "green"
 }
 
+[global_group]
+
+enemy=""
+player=""
+ship=""
+bottle=""
+bullet=""
+
 [input]
 
 jump={

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://did7w46mqwda3"
-path="res://.godot/imported/Space Cat - Walk - 02 - sheet.png-8e7a64152d1049a317eea3338d160e2c.ctex"
+uid="uid://2lxxduqntkin"
+path="res://.godot/imported/Asteroide3.png-f6692390475d777c1e1eac4fd3feb58b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/player/walking/Space Cat - Walk - 02 - sheet.png"
-dest_files=["res://.godot/imported/Space Cat - Walk - 02 - sheet.png-8e7a64152d1049a317eea3338d160e2c.ctex"]
+source_file="res://Assets/Images/background/Asteroide3.png"
+dest_files=["res://.godot/imported/Asteroide3.png-f6692390475d777c1e1eac4fd3feb58b.ctex"]
 
 [params]
 

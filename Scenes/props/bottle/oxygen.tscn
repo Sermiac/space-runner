@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://peb07osbes1w"]
+
+[ext_resource type="Texture2D" uid="uid://vfgoxe5y02sv" path="res://Assets/Images/oxigeno.png" id="1_q02ys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5b24"]
+size = Vector2(72, 132)
+
+[node name="oxygen" type="Area2D" groups=["bottle"]]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_q02ys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_s5b24")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgu5bcgjhlnuk"
-path="res://.godot/imported/Space Cat - Walk - 01 - sheet.png-72b136b8c93963714a9de1582afcc014.ctex"
+uid="uid://7eay3wgepen1"
+path="res://.godot/imported/Space Cat - Death - sheet.png-d62513a84566225232b90d379da309d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/player/walking/Space Cat - Walk - 01 - sheet.png"
-dest_files=["res://.godot/imported/Space Cat - Walk - 01 - sheet.png-72b136b8c93963714a9de1582afcc014.ctex"]
+source_file="res://Assets/Animations/player/damage/Space Cat - Death - sheet.png"
+dest_files=["res://.godot/imported/Space Cat - Death - sheet.png-d62513a84566225232b90d379da309d6.ctex"]
 
 [params]
 

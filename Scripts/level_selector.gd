@@ -32,6 +32,7 @@ func on_level_button_pressed(btn_name: StringName):
 	btn_name = btn_name.replace(" ", "_")
 	var level = "res://Scenes/levels/%s.tscn" % btn_name.to_lower()
 	var level_scene = load(level).instantiate()
+	level_scene.level_ready.connect(game_ctrl.level_selected)
+	
 	game_ctrl.add_child(level_scene)
-	game_ctrl.level_selected(btn_name)
 	self.call_deferred("queue_free")

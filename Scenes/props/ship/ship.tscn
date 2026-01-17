@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3c5ni6qe8dd"]
+
+[ext_resource type="Texture2D" uid="uid://c1n1hb451anww" path="res://icon.svg" id="1_3nq07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8oda"]
+size = Vector2(130, 130)
+
+[node name="ship" type="Area2D" groups=["ship"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3nq07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n8oda")

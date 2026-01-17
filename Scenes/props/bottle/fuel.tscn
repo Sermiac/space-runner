@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqjj6jfet3tr4"]
+
+[ext_resource type="Texture2D" uid="uid://qad0b1uxlay4" path="res://Assets/Images/Combustible.png" id="1_wd1og"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sskdo"]
+size = Vector2(74, 131)
+
+[node name="fuel" type="Area2D" groups=["bottle"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_wd1og")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_sskdo")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c70ogv5xu3h3x"
-path="res://.godot/imported/Space Cat - Idle to Walk - sheet.png-d43600b04543421aff43452563df82a4.ctex"
+path="res://.godot/imported/Space Cat - Idle to Walk - sheet.png-be22ed2bbf9e8fd94fdce70989701728.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/player/walk/Space Cat - Idle to Walk - sheet.png"
-dest_files=["res://.godot/imported/Space Cat - Idle to Walk - sheet.png-d43600b04543421aff43452563df82a4.ctex"]
+source_file="res://Assets/Animations/player/walk/Space Cat - Idle to Walk - sheet.png"
+dest_files=["res://.godot/imported/Space Cat - Idle to Walk - sheet.png-be22ed2bbf9e8fd94fdce70989701728.ctex"]
 
 [params]
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmvlavsldxx74"]
+
+[ext_resource type="Script" uid="uid://blpvvabbuqbyd" path="res://Scripts/enemies/plant.gd" id="1_neyrp"]
+[ext_resource type="Texture2D" uid="uid://c1n1hb451anww" path="res://icon.svg" id="2_j0qi6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bk5qg"]
+size = Vector2(126, 124)
+
+[node name="plant" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource("1_neyrp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_j0qi6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bk5qg")
