@@ -1,16 +1,83 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqjj6jfet3tr4"]
+[gd_scene load_steps=6 format=3 uid="uid://bqjj6jfet3tr4"]
 
 [ext_resource type="Texture2D" uid="uid://qad0b1uxlay4" path="res://Assets/Images/Combustible.png" id="1_wd1og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sskdo"]
-size = Vector2(74, 131)
+size = Vector2(42, 75)
+
+[sub_resource type="Animation" id="Animation_3lxa4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_q02ys"]
+resource_name = "move"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.3, 1.7, 0.3),
+"update": 0,
+"values": [Vector2(0, 15), Vector2(0, -15), Vector2(0, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.3, 1.7, 0.3),
+"update": 0,
+"values": [Vector2(0, 15), Vector2(0, -15), Vector2(0, 15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7fy6m"]
+_data = {
+&"RESET": SubResource("Animation_3lxa4"),
+&"move": SubResource("Animation_q02ys")
+}
 
 [node name="fuel" type="Area2D" groups=["bottle"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_wd1og")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_sskdo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7fy6m")
+}

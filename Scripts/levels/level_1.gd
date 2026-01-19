@@ -1,11 +1,10 @@
 extends Node2D
 
-var game_ctrl
+var game_ctrl = find_parent("Game")
 var speed = 0
 
 signal level_ready(data)
 @onready var nodes = {
-	"background": $Parallax2D/Sprite2D,
 	"player": $player,
 	"level_canvas": $CanvasLayer.get_children(),
 	"props": $props,

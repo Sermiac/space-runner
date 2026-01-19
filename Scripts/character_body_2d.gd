@@ -21,6 +21,7 @@ func start_animation():
 func _physics_process(delta: float) -> void:
 	movement(delta)
 	receive_damage()
+	
 	if stats["status"] == "normal":
 		$AnimationPlayer.play("RESET")
 	elif stats["status"] == "invulnerable":
@@ -34,13 +35,12 @@ func movement(delta):
 		wlk_snd.pitch_scale = snapped(speed / 258.86, 0.0001)  # default result must be ~0.9271
 		
 		player_anim.speed_scale = speed/240
-	
-	if receiving_dmg:
-		return
 		
 	# JUMP logic
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		if receiving_dmg or stats["status"] == "invulnerable":
+			return
 		if velocity.y <= 0.0:
 			player_anims_manager("player_jump")
 			wlk_snd.stop()
@@ -50,7 +50,7 @@ func movement(delta):
 	else:
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = -jump_force
-	
+			
 	# WALK logic
 	var dir = Input.get_axis("ui_left", "ui_right")
 	if dir == 0.0 and is_on_floor():
@@ -103,19 +103,22 @@ func receive_damage():
 				dmg_dir = 1
 			elif player_anim.flip_h == true:
 				dmg_dir = -1
-				
-		var dir = 4 * dmg_dir * -1
-		var dir_y = 0.5 * dmg_dir * -1
-		velocity.x = dir * speed
-		velocity.y = dir_y * speed
+		
+		velocity.x = -dmg_dir * 450
+		velocity.y = -400
 		
 		player_anims_manager("player_damage")
 		
 		move_and_slide()
-		await get_tree().create_timer(0.25).timeout
+		await get_tree().create_timer(0.20).timeout
 		
-		dmg_dir = 0
 		receiving_dmg = false
+		
+	elif stats["status"] == "invulnerable":
+		velocity.x = -dmg_dir * 400
+		move_and_slide()
+		await get_tree().create_timer(0.75).timeout
+		dmg_dir = 0
 
 
 ## MANAGE PLAYER ANIMATION STAGES /--------------/

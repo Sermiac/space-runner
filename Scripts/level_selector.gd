@@ -29,6 +29,8 @@ func create_level_button(btn_name: StringName):
 	levels.add_child(btn)
 
 func on_level_button_pressed(btn_name: StringName):
+	game_ctrl.load_screen.show()
+	
 	btn_name = btn_name.replace(" ", "_")
 	var level = "res://Scenes/levels/%s.tscn" % btn_name.to_lower()
 	var level_scene = load(level).instantiate()

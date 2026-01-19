@@ -5,10 +5,10 @@ resource_name = "LowPassFilter"
 
 [sub_resource type="AudioEffectEQ" id="AudioEffectEQ_j3pel"]
 resource_name = "EQ"
-band_db/320_hz = 5.5
-band_db/1000_hz = -13.5
-band_db/3200_hz = -41.5
-band_db/10000_hz = -37.4
+band_db/320_hz = 2.2
+band_db/1000_hz = -41.1
+band_db/3200_hz = -52.6
+band_db/10000_hz = -54.0
 
 [resource]
 bus/1/name = &"walk"

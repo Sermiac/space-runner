@@ -1,25 +1,26 @@
 extends Node
 
+# Load screen
+@onready var load_screen = $CanvasLayer/LoadingScreen
+@onready var load_bar = $CanvasLayer/LoadingScreen/ProgressBar
 # Controls game speed
 @export var SPEED = 1.0
 # Level stats
-var p_init
-var ba_init
 var oxygen_consumption
 
 func _on_exit_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-	
-	
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/main_menu.tscn")
+
+
 var end
+var playing
 func _physics_process(delta: float) -> void:
-	if NODES:
+	if playing:
 		if NODES["level_canvas"][0].value <= 0.0:
 			print("YOU LOOSE")
 			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 			return
 		var p_pos = NODES["player"].global_position
-		var ba_pos = NODES["background"].global_position
 		
 		# OUT OF MAP
 		"""
@@ -30,45 +31,81 @@ func _physics_process(delta: float) -> void:
 			NODES["player"].get_node("Camera2D").enabled = false
 			end = true
 		"""
-		# BACKGROUND MOVEMENT
-		NODES["background"].global_position.x = (p_pos.x - p_init.x) + ba_init.x
-		NODES["background"].global_position.y = (p_pos.y - p_init.y) / 2 + ba_init.y
 		# Oxygen consumption
 		NODES["level_canvas"][0].value -= oxygen_consumption * delta
+
+# LOAD LEVEL /-----------------------------------/
+func _process(delta):
+	if current_prop >= props_to_spawn.size():
+		if load_screen.visible and NODES.size() != 0:
+			finish_props()
+		return
+
+	for i in 1:
+		if current_prop >= props_to_spawn.size():
+			finish_props()
+			return
+
+		spawn_prop(props_to_spawn[current_prop])
+		current_prop += 1
+		load_bar.value = current_prop
+
+func spawn_prop(data):
+	var prop = data.prop
+	var path = "res://Scenes/props/%s/%s.tscn" % [
+		data.category,
+		prop.name.split("_")[0]
+	]
+
+	var node = load(path).instantiate()
+	node.position = prop.position
+	node.name = prop.name
+
+	if prop.has_meta("Direction"):
+		node.new_direction = prop.get_meta("Direction")
+	if node is Area2D:
+		node.body_entered.connect(player_entered_area.bind(node))
+	if node.is_in_group("enemy"):
+		node.game_speed = SPEED
+	if node.is_in_group("bottle"):
+		node.get_node("AnimationPlayer").play("move")
+
+	NODES["level"].add_child(node)
+
+func finish_props():
+	NODES["props"].queue_free()
+	load_screen.hide()
+	playing = true
+	get_tree().paused = false
 
 
 var NODES = {}
 func level_selected(data):
+	get_tree().paused = true
 	NODES = data
+	load_bar.max_value = NODES.size()
 	# set NODES properties
 	NODES["level"].game_ctrl = self
 	NODES["player"].game_ctrl = self
 	NODES["player"].start_animation()
 	NODES["level_canvas"][0].max_value = NODES["level"].max_oxygen
 	# get node properties
-	p_init = NODES["player"].global_position
-	ba_init = NODES["background"].position
-	NODES["background"].global_position = (p_init - p_init) + ba_init
 	oxygen_consumption = NODES["level"].oxygen_consumption
 
-	init_props()
+	prepare_props()
 
 
-func init_props():
+var props_to_spawn := []
+var current_prop := 0
+func prepare_props():
 	NODES["props"].visible = false
 	for category in NODES["props"].get_children():
 		for prop in category.get_children():
-			var path = "res://Scenes/props/%s/%s.tscn" % [category.name, prop.name.split("_")[0]]
-			var node = load(path).instantiate()
-			node.position = prop.position
-			node.name = prop.name
-			if prop.has_meta("Direction"):
-				node.new_direction = prop.get_meta("Direction")
-			if node is Area2D:
-				node.connect("body_entered", Callable(self, "player_entered_area").bind(node))
-			if node.is_in_group("enemy"):
-				node.game_speed = SPEED
-			NODES["level"].add_child(node)
+			props_to_spawn.append({
+				"category": category.name,
+				"prop": prop
+			})
+# END /-----------------------------------------/
 
 
 # HANDDLE COLLISSIONS /-----------------------/
@@ -104,7 +141,10 @@ func handle_ship(area):
 		NODES["level_canvas"][4].text = "NOT ENOUGH FUEL!!"
 		await get_tree().create_timer(2.0).timeout
 		NODES["level_canvas"][4].text = ""
+		
 	elif NODES["level_canvas"][2].value >= 99:
+		NODES["level_canvas"][4].text = "You Win!!"
+		await get_tree().create_timer(2.0).timeout
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
 
 func handle_enemy(area):
@@ -117,7 +157,6 @@ func handle_terrain(area, body):
 
 # Player interactions /-----------/
 func p_receive_damage():
-	print(NODES["player"].stats["status"])
 	if NODES["player"].stats["status"] == "invulnerable":
 		return
 		
@@ -129,5 +168,5 @@ func p_receive_damage():
 	NODES["level_canvas"][5].text = "Life: " + str(NODES["player"].stats["life"])
 	NODES["player"].stats["status"] = "invulnerable"
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.5/SPEED).timeout
 	NODES["player"].stats["status"] = "normal"

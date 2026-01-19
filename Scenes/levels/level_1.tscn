@@ -1,8 +1,7 @@
-[gd_scene load_steps=75 format=4 uid="uid://b6ku0f6yte71q"]
+[gd_scene load_steps=74 format=4 uid="uid://b6ku0f6yte71q"]
 
 [ext_resource type="Script" uid="uid://bt8e2r2cmcsog" path="res://Scripts/character_body_2d.gd" id="1_8ffim"]
 [ext_resource type="Script" uid="uid://dd47esdc0wv1h" path="res://Scripts/levels/level_1.gd" id="1_dsuda"]
-[ext_resource type="Texture2D" uid="uid://cm2cp820dy2vj" path="res://Assets/Images/Fondoprueba.png" id="1_yffda"]
 [ext_resource type="Texture2D" uid="uid://ccrpp1weh1oq2" path="res://Assets/Images/background/color.png" id="2_lpshy"]
 [ext_resource type="Texture2D" uid="uid://bybnrcljc54sb" path="res://Assets/Images/background/Estrellas.png" id="3_onyy7"]
 [ext_resource type="Texture2D" uid="uid://bl4vm4y1n6t4w" path="res://Assets/Images/background/Luna.png" id="4_flpb6"]
@@ -278,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_skbdh")
 }],
-"loop": true,
+"loop": false,
 "name": &"player_damage",
 "speed": 12.0
 }, {
@@ -488,6 +487,7 @@ bg_color = Color(0, 0, 0, 0.6156863)
 bg_color = Color(0.9674435, 0, 0.23777837, 1)
 
 [node name="level_1" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_dsuda")
 gravity = 800
 player_jump_force = 700.0
@@ -562,16 +562,6 @@ position = Vector2(-38, 101)
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("10_60gpg")
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
-visible = false
-z_index = -1
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-z_index = -1
-position = Vector2(581, 223)
-scale = Vector2(4.5, 4.5)
-texture = ExtResource("1_yffda")
-
 [node name="floor" type="Node2D" parent="."]
 position = Vector2(0, 5)
 
@@ -589,7 +579,7 @@ script = ExtResource("1_8ffim")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_dsuda")
-animation = &"player_walking"
+animation = &"player_damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2(0, 2)
@@ -737,5 +727,4 @@ metadata/Direction = "izquierda"
 
 [node name="worm_0" type="Sprite2D" parent="props/enemy"]
 position = Vector2(1027, 432)
-scale = Vector2(1, 0.21875)
 texture = ExtResource("12_041ro")

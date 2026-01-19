@@ -5,11 +5,14 @@
 [ext_resource type="AudioStream" uid="uid://doqvf2stl00vu" path="res://Assets/Sounds/player/walking/walking_1.1.mp3" id="3_wrm1d"]
 
 [node name="Game" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_ebmjs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+z_index = 1
 offset_left = 1013.0
 offset_top = 57.0
 offset_right = 1067.0
@@ -22,6 +25,31 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "<<"
+
+[node name="LoadingScreen" type="Node2D" parent="CanvasLayer"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/LoadingScreen"]
+offset_left = -88.0
+offset_top = -67.0
+offset_right = 1256.0
+offset_bottom = 721.0
+color = Color(0.025764057, 0.010672969, 0.106087185, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/LoadingScreen"]
+offset_left = 257.0
+offset_top = 504.0
+offset_right = 891.0
+offset_bottom = 543.0
+theme_override_font_sizes/font_size = 25
+
+[node name="Label" type="Label" parent="CanvasLayer/LoadingScreen"]
+offset_left = 500.0
+offset_top = 427.0
+offset_right = 640.0
+offset_bottom = 469.0
+theme_override_font_sizes/font_size = 30
+text = "Loading..."
 
 [node name="level_selector" parent="." instance=ExtResource("2_qxrlw")]
 
