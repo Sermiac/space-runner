@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cin3mhqikbbs5" path="res://Scripts/game.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://bt36hhvq1mjmp" path="res://Scenes/level_selector.tscn" id="2_qxrlw"]
-[ext_resource type="AudioStream" uid="uid://doqvf2stl00vu" path="res://Assets/Sounds/player/walking/walking_1.1.mp3" id="3_wrm1d"]
+[ext_resource type="AudioStream" uid="uid://bdwxkuvbdrlj1" path="res://Assets/Sounds/player/walking/walk1.mp3" id="3_wrm1d"]
 
 [node name="Game" type="Node2D"]
 process_mode = 3
@@ -57,6 +57,7 @@ text = "Loading..."
 
 [node name="PlayerStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_wrm1d")
+max_polyphony = 3
 bus = &"walk"
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/HBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]

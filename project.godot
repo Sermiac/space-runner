@@ -13,6 +13,7 @@ config_version=5
 config/name="Space-Runner"
 run/main_scene="uid://blsx3t0livsf8"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -23,6 +24,7 @@ Globals="*res://Scripts/globals.gd"
 [display]
 
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [file_customization]
 

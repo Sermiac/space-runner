@@ -14,11 +14,23 @@ var speed
 @onready var jump_force = level.player_jump_force
 var collided
 
+var walk_sound = preload("res://Assets/Sounds/player/walking/walk1.mp3")
+var walk_sound2 = preload("res://Assets/Sounds/player/walking/walk2.mp3")
 
 func start_animation():
 	player_anim.play("player_idle")
 
 func _physics_process(delta: float) -> void:
+	if !speed:
+		speed = level.speed
+		wlk_snd = game_ctrl.get_node("PlayerStream")
+		const num = 205.46
+		wlk_snd.pitch_scale = snapped(speed / num, 0.0001)
+		print(wlk_snd.pitch_scale)
+		wlk_snd.stream = walk_sound
+		
+		player_anim.speed_scale = speed/240
+
 	movement(delta)
 	receive_damage()
 	
@@ -29,13 +41,6 @@ func _physics_process(delta: float) -> void:
 
 # Player movement
 func movement(delta):
-	if !speed:
-		speed = level.speed
-		wlk_snd = game_ctrl.get_node("PlayerStream")
-		wlk_snd.pitch_scale = snapped(speed / 258.86, 0.0001)  # default result must be ~0.9271
-		
-		player_anim.speed_scale = speed/240
-		
 	# JUMP logic
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -52,18 +57,30 @@ func movement(delta):
 			velocity.y = -jump_force
 			
 	# WALK logic
+	# SOUND
+	if player_anim.animation.contains("walking") and (player_anim.frame in [4, 10]):
+		if wlk_snd.stream == walk_sound2:
+			wlk_snd.stream = walk_sound
+		else:
+			wlk_snd.stream = walk_sound2
+		wlk_snd.play()
+	
+	if player_anim.animation == "player_walk" and (player_anim.frame in [2]):
+		if wlk_snd.stream == walk_sound2:
+			wlk_snd.stream = walk_sound
+		else:
+			wlk_snd.stream = walk_sound2
+		wlk_snd.play()
+	
+	# MOVEMENT
 	var dir = Input.get_axis("ui_left", "ui_right")
 	if dir == 0.0 and is_on_floor():
 		player_anims_manager("player_idle")
-		wlk_snd.play()
+		wlk_snd.stop()
 		
 	elif dir == -1:
 		player_anim.flip_h = true
 		if is_on_floor():
-			if wlk_snd.playing == false:
-				var num = 1
-				wlk_snd.stream = load("res://Assets/Sounds/player/walking/walking_%s.1.mp3" % num)
-				wlk_snd.play()
 			if !walk_mode:
 				player_anims_manager("player_walk")
 			if walk_mode:
@@ -72,11 +89,6 @@ func movement(delta):
 	elif dir == 1:
 		player_anim.flip_h = false
 		if is_on_floor():
-			if wlk_snd.playing == false:
-				var num = 1
-				wlk_snd.stream = load("res://Assets/Sounds/player/walking/walking_%s.1.mp3" % num)
-				wlk_snd.play()
-				
 			if !walk_mode:
 				player_anims_manager("player_walk")
 			if walk_mode:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://b6ku0f6yte71q"]
+[gd_scene load_steps=75 format=4 uid="uid://b6ku0f6yte71q"]
 
 [ext_resource type="Script" uid="uid://bt8e2r2cmcsog" path="res://Scripts/character_body_2d.gd" id="1_8ffim"]
 [ext_resource type="Script" uid="uid://dd47esdc0wv1h" path="res://Scripts/levels/level_1.gd" id="1_dsuda"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bc5bq1lcorm00" path="res://Assets/Images/background/Asteroide2.png" id="9_nfxff"]
 [ext_resource type="Texture2D" uid="uid://2lxxduqntkin" path="res://Assets/Images/background/Asteroide3.png" id="10_60gpg"]
 [ext_resource type="Texture2D" uid="uid://c1n1hb451anww" path="res://icon.svg" id="12_041ro"]
+[ext_resource type="Texture2D" uid="uid://cs4c7m4vid7wf" path="res://Assets/Animations/ship/idle/Spaceship - Idle - sheet.png" id="22_dsxye"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyddi"]
 texture = ExtResource("5_0lml3")
@@ -303,7 +304,58 @@ animations = [{
 "texture": SubResource("AtlasTexture_sskdo")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_041ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_041ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sskdo")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sskdo")
@@ -489,11 +541,7 @@ bg_color = Color(0.9674435, 0, 0.23777837, 1)
 [node name="level_1" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_dsuda")
-gravity = 800
-player_jump_force = 700.0
-player_speed = 240.0
-oxygen_consumption = 3.4
-max_oxygen = 300.0
+initial_oxygen = 160.0
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 z_index = -1
@@ -579,7 +627,7 @@ script = ExtResource("1_8ffim")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_dsuda")
-animation = &"player_damage"
+animation = &"player_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 position = Vector2(0, 2)
@@ -589,8 +637,6 @@ shape = SubResource("CapsuleShape2D_wrm1d")
 position = Vector2(0, -55)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
-
-[node name="PlayerStream" type="AudioStreamPlayer" parent="player"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 libraries = {
@@ -664,59 +710,60 @@ text = "Life: 3"
 
 [node name="oxygen_0" type="Sprite2D" parent="props/bottle"]
 position = Vector2(1027, 332)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_tlryv")
 
 [node name="oxygen_3" type="Sprite2D" parent="props/bottle"]
 position = Vector2(2677, -455)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_tlryv")
 
 [node name="oxygen_4" type="Sprite2D" parent="props/bottle"]
 position = Vector2(3035, -524)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_tlryv")
 
 [node name="oxygen_1" type="Sprite2D" parent="props/bottle"]
 position = Vector2(2596, 332)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_tlryv")
 
 [node name="oxygen_2" type="Sprite2D" parent="props/bottle"]
 position = Vector2(2173, 332)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_tlryv")
 
 [node name="fuel_0" type="Sprite2D" parent="props/bottle"]
 position = Vector2(1829, 101)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("8_dsuda")
 
 [node name="fuel_1" type="Sprite2D" parent="props/bottle"]
 position = Vector2(1500, 337)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("8_dsuda")
 
 [node name="fuel_2" type="Sprite2D" parent="props/bottle"]
 position = Vector2(2387, 329)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("8_dsuda")
 
 [node name="fuel_3" type="Sprite2D" parent="props/bottle"]
 position = Vector2(2171, -101)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("8_dsuda")
 
 [node name="fuel_4" type="Sprite2D" parent="props/bottle"]
 position = Vector2(2874, 111)
-scale = Vector2(4.5, 4.5)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("8_dsuda")
 
 [node name="ship" type="Node2D" parent="props"]
 
 [node name="ship_0" type="Sprite2D" parent="props/ship"]
-position = Vector2(3125, 85)
-texture = ExtResource("12_041ro")
+position = Vector2(3387, 9)
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("22_dsxye")
 
 [node name="enemy" type="Node2D" parent="props"]
 

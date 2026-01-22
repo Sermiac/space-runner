@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbwktd75fug1r"]
 
-[ext_resource type="AudioStream" uid="uid://brxctt2k0kdjb" path="res://Assets/Music/music.mp3" id="1_fbmny"]
+[ext_resource type="AudioStream" uid="uid://bdjoqakbcwbvi" path="res://Assets/Music/Evolving through the cosmos.mp3" id="1_fbmny"]
 
 [node name="Music" type="AudioStreamPlayer"]
+process_mode = 3
 stream = ExtResource("1_fbmny")
 volume_db = -10.0
 autoplay = true

@@ -12,11 +12,12 @@ signal level_ready(data)
 }
 
 @export_category("Level Properties")
-@export var gravity = 900
-@export var player_jump_force = 650.0
-@export var player_speed: float = 120.0
-@export var oxygen_consumption: float
-@export var max_oxygen: float = 100.0
+@export var gravity = 800
+@export var player_jump_force = 700.0
+@export var player_speed: float = 240.0
+@export var oxygen_consumption: float = 3.4
+@export var max_oxygen: float = 300.0
+@export var initial_oxygen: float = 80.0
 
 var loaded = false
 

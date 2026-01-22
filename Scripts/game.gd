@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 			print("YOU LOOSE")
 			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 			return
-		var p_pos = NODES["player"].global_position
+		var _p_pos = NODES["player"].global_position
 		
 		# OUT OF MAP
 		"""
@@ -32,10 +32,10 @@ func _physics_process(delta: float) -> void:
 			end = true
 		"""
 		# Oxygen consumption
-		NODES["level_canvas"][0].value -= oxygen_consumption * delta
+		NODES["level_canvas"][0].value -= (oxygen_consumption * delta) * SPEED
 
 # LOAD LEVEL /-----------------------------------/
-func _process(delta):
+func _process(_delta):
 	if current_prop >= props_to_spawn.size():
 		if load_screen.visible and NODES.size() != 0:
 			finish_props()
@@ -76,12 +76,18 @@ func finish_props():
 	NODES["props"].queue_free()
 	load_screen.hide()
 	playing = true
+	
+	if Globals.music:
+		Music.stream = preload("res://Assets/Music/Evolving Harmony.mp3")
+		Music.play()
+	
 	get_tree().paused = false
 
 
 var NODES = {}
 func level_selected(data):
 	get_tree().paused = true
+	
 	NODES = data
 	load_bar.max_value = NODES.size()
 	# set NODES properties
@@ -89,6 +95,7 @@ func level_selected(data):
 	NODES["player"].game_ctrl = self
 	NODES["player"].start_animation()
 	NODES["level_canvas"][0].max_value = NODES["level"].max_oxygen
+	NODES["level_canvas"][0].value = NODES["level"].initial_oxygen
 	# get node properties
 	oxygen_consumption = NODES["level"].oxygen_consumption
 
@@ -144,7 +151,10 @@ func handle_ship(area):
 		
 	elif NODES["level_canvas"][2].value >= 99:
 		NODES["level_canvas"][4].text = "You Win!!"
+		area.get_node("AnimatedSprite2D").play("start")
 		await get_tree().create_timer(2.0).timeout
+		area.get_node("AnimatedSprite2D").play("operation")
+		await get_tree().create_timer(2.0).timeout # ESTO SE CAMBIA POR LA CINEMATICA
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
 
 func handle_enemy(area):

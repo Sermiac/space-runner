@@ -1,5 +1,10 @@
 extends Node
 
+func _ready() -> void:
+	if Globals.music:
+		Music.stream = preload("res://Assets/Music/Evolving through the cosmos.mp3")
+		Music.play()
+	print("Embedded window: ", Engine.is_embedded_in_editor())
 
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
