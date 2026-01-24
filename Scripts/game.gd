@@ -36,6 +36,8 @@ func _physics_process(delta: float) -> void:
 
 # LOAD LEVEL /-----------------------------------/
 func _process(_delta):
+	if playing:
+		return
 	if current_prop >= props_to_spawn.size():
 		if load_screen.visible and NODES.size() != 0:
 			finish_props()
@@ -74,7 +76,6 @@ func spawn_prop(data):
 
 func finish_props():
 	NODES["props"].queue_free()
-	load_screen.hide()
 	playing = true
 	
 	if Globals.music:
@@ -82,6 +83,9 @@ func finish_props():
 		Music.play()
 	
 	get_tree().paused = false
+	
+	await get_tree().create_timer(0.2).timeout
+	load_screen.hide()
 
 
 var NODES = {}

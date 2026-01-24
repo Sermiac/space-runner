@@ -316,7 +316,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7jp6"]
-size = Vector2(45.33658, 60.532444)
+size = Vector2(45.33658, 61.561325)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3pxuu"]
 radius = 65.0
@@ -438,13 +438,13 @@ _data = {
 script = ExtResource("1_c7jp6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -126)
+position = Vector2(0, -121)
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_3pxuu")
-animation = &"worm_idle"
+animation = &"worm_idle_out"
 
 [node name="activate" type="CollisionShape2D" parent="."]
-position = Vector2(0, -163.5)
+position = Vector2(0, -166.00002)
 scale = Vector2(6.131913, 5.831583)
 shape = SubResource("RectangleShape2D_c7jp6")
 debug_color = Color(0.9966753, 0.8374025, 0.58439094, 0.41960785)

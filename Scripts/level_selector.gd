@@ -23,7 +23,7 @@ func create_levels_list():
 
 func create_level_button(btn_name: StringName):
 	var btn = Button.new()
-	btn.text = btn_name.replace(".tscn", "").replace("le" , "Le").replace("_", " ")
+	btn.text = btn_name.replace(".tscn", "").replace("le" , "Le").replace("_", " ").get_slice(".", 0)
 	btn.add_theme_font_size_override("font_size", 40)
 	btn.pressed.connect(on_level_button_pressed.bind(btn.text))
 	levels.add_child(btn)
