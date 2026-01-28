@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c2ctr14wiw1vs"]
+
+[ext_resource type="Script" uid="uid://cjgdm7tigj6aa" path="res://Scripts/dummies.gd" id="1_7cpip"]
+[ext_resource type="Texture2D" uid="uid://mdochs717u5t" path="res://Assets/Animations/enemies/plant/Plant - Idle - L - sheet.png" id="1_it527"]
+[ext_resource type="PackedScene" uid="uid://bmvlavsldxx74" path="res://Scenes/props/enemy/plant.tscn" id="2_j6ivd"]
+[ext_resource type="Texture2D" uid="uid://bbv8iw5c8c7nq" path="res://Assets/Animations/enemies/plant/Plant - Idle - R - sheet.png" id="3_j6ivd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wrh1"]
+atlas = ExtResource("3_j6ivd")
+region = Rect2(0, 0, 56, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_603fh"]
+atlas = ExtResource("1_it527")
+region = Rect2(0, 0, 56, 43)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6i2l6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wrh1")
+}],
+"loop": true,
+"name": &"derecha",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_603fh")
+}],
+"loop": false,
+"name": &"izquierda",
+"speed": 5.0
+}]
+
+[node name="plant" type="Node2D" unique_id=567328596 groups=["enemy"]]
+script = ExtResource("1_7cpip")
+prop_scene = ExtResource("2_j6ivd")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1143122145]
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_6i2l6")
+animation = &"izquierda"
+frame_progress = 1.0
+metadata/Direction = "izquierda"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1593357619]
+offset_left = -60.0
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = 93.0
+color = Color(0, 0.64705884, 0.7882353, 0.42352942)
+
+[node name="activate" type="ColorRect" parent="." unique_id=602081325]
+offset_left = -528.0
+offset_top = -136.0
+offset_right = 62.0
+offset_bottom = 95.0
+color = Color(0.6954267, 0.56743735, 0.21778801, 0.42352942)

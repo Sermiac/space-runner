@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://qwkc15q5akrf"]
+
+[ext_resource type="Script" uid="uid://cjgdm7tigj6aa" path="res://Scripts/dummies.gd" id="1_lv8mn"]
+[ext_resource type="PackedScene" uid="uid://bqjj6jfet3tr4" path="res://Scenes/props/bottle/fuel.tscn" id="2_lv8mn"]
+[ext_resource type="Texture2D" uid="uid://qad0b1uxlay4" path="res://Assets/Images/Combustible.png" id="3_lv8mn"]
+
+[node name="fuel" type="Node2D" unique_id=1578344447]
+script = ExtResource("1_lv8mn")
+prop_scene = ExtResource("2_lv8mn")
+direction = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1015054570]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_lv8mn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=844533763]
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 38.0
+color = Color(0, 0.64705884, 0.7882353, 0.42352942)

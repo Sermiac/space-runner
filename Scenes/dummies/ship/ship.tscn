@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bk3lptncv5cpq"]
+
+[ext_resource type="Texture2D" uid="uid://cs4c7m4vid7wf" path="res://Assets/Animations/ship/idle/Spaceship - Idle - sheet.png" id="1_0psef"]
+[ext_resource type="Script" uid="uid://cjgdm7tigj6aa" path="res://Scripts/dummies.gd" id="1_aebd7"]
+[ext_resource type="PackedScene" uid="uid://d3c5ni6qe8dd" path="res://Scenes/props/ship/ship.tscn" id="2_ypamu"]
+
+[node name="ship" type="Node2D" unique_id=1239761100]
+script = ExtResource("1_aebd7")
+prop_scene = ExtResource("2_ypamu")
+direction = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1241810343]
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_0psef")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=863445003]
+offset_left = -135.0
+offset_top = -146.0
+offset_right = 140.0
+offset_bottom = 145.0
+color = Color(0, 0.64705884, 0.7882353, 0.42352942)

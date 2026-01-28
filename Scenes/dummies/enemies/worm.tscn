@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c5sqenkm3o88"]
+
+[ext_resource type="Texture2D" uid="uid://dtydhs2hjf3hn" path="res://Assets/Animations/enemies/worm/Tierra.png" id="1_3jgly"]
+[ext_resource type="Script" uid="uid://cjgdm7tigj6aa" path="res://Scripts/dummies.gd" id="1_lc66m"]
+[ext_resource type="PackedScene" uid="uid://c2jb7mddwtgo2" path="res://Scenes/props/enemy/worm.tscn" id="2_mto7g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y001r"]
+atlas = ExtResource("1_3jgly")
+region = Rect2(0, 0, 40, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2q8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y001r")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="worm" type="Node2D" unique_id=931988659]
+script = ExtResource("1_lc66m")
+prop_scene = ExtResource("2_mto7g")
+direction = 1
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=176824721]
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_h2q8u")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1353504769]
+offset_left = -89.0
+offset_top = -137.0
+offset_right = 90.0
+offset_bottom = 135.0
+color = Color(0, 0.64705884, 0.7882353, 0.42352942)
+
+[node name="activate" type="ColorRect" parent="." unique_id=1522963132]
+offset_left = -164.0
+offset_top = -226.0
+offset_right = 167.0
+offset_bottom = 134.0
+color = Color(0.6954267, 0.56743735, 0.21778801, 0.42352942)

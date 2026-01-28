@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ml47lii4jxt"
-path="res://.godot/imported/Space Cat - Idle - sheet.png-1079d469e7e4d12b865ae2b319185651.ctex"
+uid="uid://bwycolj7grv1y"
+path="res://.godot/imported/Space Cat - Death - sheet.png-c9d05c355631e98ac6bbed7edea48404.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Animations/player/idle/Space Cat - Idle - sheet.png"
-dest_files=["res://.godot/imported/Space Cat - Idle - sheet.png-1079d469e7e4d12b865ae2b319185651.ctex"]
+source_file="res://Assets/Animations/player/death/Space Cat - Death - sheet.png"
+dest_files=["res://.godot/imported/Space Cat - Death - sheet.png-c9d05c355631e98ac6bbed7edea48404.ctex"]
 
 [params]
 

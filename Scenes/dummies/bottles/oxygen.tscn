@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cmr4iug8wk13l"]
+
+[ext_resource type="Texture2D" uid="uid://vfgoxe5y02sv" path="res://Assets/Images/oxigeno.png" id="1_erwcs"]
+[ext_resource type="Script" uid="uid://cjgdm7tigj6aa" path="res://Scripts/dummies.gd" id="1_tih3v"]
+[ext_resource type="PackedScene" uid="uid://peb07osbes1w" path="res://Scenes/props/bottle/oxygen.tscn" id="2_rvhjy"]
+
+[node name="oxygen" type="Node2D" unique_id=1578344447]
+script = ExtResource("1_tih3v")
+prop_scene = ExtResource("2_rvhjy")
+direction = 1
+extra_data = null
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=528686332]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_erwcs")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=844533763]
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 38.0
+color = Color(0, 0.64705884, 0.7882353, 0.42352942)

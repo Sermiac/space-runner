@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ml47lii4jxt"
-path="res://.godot/imported/Space Cat - Idle - sheet.png-1079d469e7e4d12b865ae2b319185651.ctex"
+uid="uid://bbv8iw5c8c7nq"
+path="res://.godot/imported/Plant - Idle - R - sheet.png-fa5a6566e7244baaa8385f38601fdd9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Animations/player/idle/Space Cat - Idle - sheet.png"
-dest_files=["res://.godot/imported/Space Cat - Idle - sheet.png-1079d469e7e4d12b865ae2b319185651.ctex"]
+source_file="res://Assets/Animations/enemies/plant/Plant - Idle - R - sheet.png"
+dest_files=["res://.godot/imported/Plant - Idle - R - sheet.png-fa5a6566e7244baaa8385f38601fdd9c.ctex"]
 
 [params]
 

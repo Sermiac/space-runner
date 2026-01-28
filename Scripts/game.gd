@@ -16,10 +16,20 @@ var end
 var playing
 func _physics_process(delta: float) -> void:
 	if playing:
-		if NODES["level_canvas"][0].value <= 0.0:
-			print("YOU LOOSE")
-			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		if NODES["player"].stats["status"].contains("death"):
+			print("YOU LOSE")
+			playing = false
+			await get_tree().create_timer(4.0).timeout
+			get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
 			return
+		if NODES["level_canvas"][0].value <= 0.0:
+			print("YOU LOSE")
+			NODES["player"].stats["status"] = "death_oxygen"
+			playing = false
+			await get_tree().create_timer(4.0).timeout
+			get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
+			return
+			
 		var _p_pos = NODES["player"].global_position
 		
 		# OUT OF MAP
@@ -29,6 +39,7 @@ func _physics_process(delta: float) -> void:
 		if p_pos.y >= 420.0 and !end:
 			NODES["level"].get_node("Camera2D").global_position = NODES["player"].get_node("Camera2D").global_position
 			NODES["player"].get_node("Camera2D").enabled = false
+			NODES["level"].get_node("Camera2D").enabled = true
 			end = true
 		"""
 		# Oxygen consumption
@@ -52,19 +63,14 @@ func _process(_delta):
 		current_prop += 1
 		load_bar.value = current_prop
 
-func spawn_prop(data):
-	var prop = data.prop
-	var path = "res://Scenes/props/%s/%s.tscn" % [
-		data.category,
-		prop.name.split("_")[0]
-	]
+func spawn_prop(dummy):
 
-	var node = load(path).instantiate()
-	node.position = prop.position
-	node.name = prop.name
+	var node = dummy.prop_scene.instantiate()
+	node.global_position = dummy.global_position
+	node.name = dummy.name
 
-	if prop.has_meta("Direction"):
-		node.new_direction = prop.get_meta("Direction")
+	if "new_direction" in node:
+		node.new_direction = "derecha" if dummy.direction == 0 else "izquierda"
 	if node is Area2D:
 		node.body_entered.connect(player_entered_area.bind(node))
 	if node.is_in_group("enemy"):
@@ -83,6 +89,7 @@ func finish_props():
 		Music.play()
 	
 	get_tree().paused = false
+	NODES["level_canvas"][5].text = "Life: " + str(NODES["player"].stats["life"])
 	
 	await get_tree().create_timer(0.2).timeout
 	load_screen.hide()
@@ -110,12 +117,7 @@ var props_to_spawn := []
 var current_prop := 0
 func prepare_props():
 	NODES["props"].visible = false
-	for category in NODES["props"].get_children():
-		for prop in category.get_children():
-			props_to_spawn.append({
-				"category": category.name,
-				"prop": prop
-			})
+	props_to_spawn = NODES["props"].get_children()
 # END /-----------------------------------------/
 
 
@@ -133,8 +135,11 @@ func player_entered_area(body, area):
 		handle_ship(area)
 
 func handle_bottle(area):
+	if NODES["player"].stats["status"].contains("death"):
+		return
+
 	var bottle_vals = {"oxygen":40, "fuel":10}
-	var bottle_name = area.name.split("_",1)[0]
+	var bottle_name = "oxygen" if area.name.contains("oxygen") else "fuel"
 	
 	var num
 	for obj_indx in range(NODES["level_canvas"].size()):
@@ -148,21 +153,24 @@ func handle_bottle(area):
 	area.call_deferred("queue_free")
 	
 func handle_ship(area):
+	# Lose
 	if NODES["level_canvas"][2].value <= 99:
 		NODES["level_canvas"][4].text = "NOT ENOUGH FUEL!!"
 		await get_tree().create_timer(2.0).timeout
 		NODES["level_canvas"][4].text = ""
-		
+	
+	# Win
 	elif NODES["level_canvas"][2].value >= 99:
+		NODES["player"].stats["status"] = "win"
 		NODES["level_canvas"][4].text = "You Win!!"
-		area.get_node("AnimatedSprite2D").play("start")
-		await get_tree().create_timer(2.0).timeout
-		area.get_node("AnimatedSprite2D").play("operation")
-		await get_tree().create_timer(2.0).timeout # ESTO SE CAMBIA POR LA CINEMATICA
+		
+		await area.win_animation()
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
 
 func handle_enemy(area):
+	var dir = (NODES["player"].global_position - area.global_position).normalized()
 	area.player_collided()
+	NODES["player"].dmg_dir = 1 if dir.x >= 0 else -1
 
 
 func handle_terrain(area, body):
@@ -171,16 +179,15 @@ func handle_terrain(area, body):
 
 # Player interactions /-----------/
 func p_receive_damage():
-	if NODES["player"].stats["status"] == "invulnerable":
+	if NODES["player"].stats["status"] != "normal":
+		return
+	if NODES["player"].stats["life"] == 0:
 		return
 		
 	NODES["player"].stats["life"] -= 1
 	NODES["player"].receiving_dmg = true
 	if NODES["player"].stats["life"] == 0:
-		get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
+		NODES["player"].stats["status"] = "death_damage"
 		
 	NODES["level_canvas"][5].text = "Life: " + str(NODES["player"].stats["life"])
 	NODES["player"].stats["status"] = "invulnerable"
-	
-	await get_tree().create_timer(1.5/SPEED).timeout
-	NODES["player"].stats["status"] = "normal"

@@ -1,17 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1efae0hetbgs"]
 
-[ext_resource type="Script" uid="uid://c0j3nlhanypyw" path="res://Scripts/enemies/plant/bullet.gd" id="1_sckii"]
-[ext_resource type="Texture2D" uid="uid://c1n1hb451anww" path="res://icon.svg" id="2_whrv1"]
+[ext_resource type="Script" uid="uid://c0j3nlhanypyw" path="res://Scripts/props/enemies/plant/bullet.gd" id="1_sckii"]
+[ext_resource type="Texture2D" uid="uid://bvriesqyxq1me" path="res://Assets/Animations/enemies/plant/Plant - Projectile - sheet.png" id="2_ngrew"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtih2"]
-size = Vector2(128, 50)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngrew"]
+radius = 9.0
+height = 34.0
 
 [node name="bullet" type="Area2D" groups=["bullet", "enemy"]]
 script = ExtResource("1_sckii")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 0.40625)
-texture = ExtResource("2_whrv1")
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("2_ngrew")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_vtih2")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ngrew")
