@@ -1,10 +1,13 @@
 extends Node
 
+var menu_song = preload("res://Assets/Music/Evolving through the cosmos.mp3")
+
 func _ready() -> void:
-	if Globals.music:
-		Music.stream = preload("res://Assets/Music/Evolving through the cosmos.mp3")
+	if Globals.music and Music.stream != menu_song:
+		Music.stream = menu_song
 		Music.play()
 	print("Embedded window: ", Engine.is_embedded_in_editor())
+	$background.play("default")
 
 func _on_play_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")

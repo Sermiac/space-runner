@@ -2,11 +2,15 @@ extends Control
 
 @onready var levels = $MarginContainer/GridContainer
 @onready var game_ctrl = get_parent()
+var menu_song = preload("res://Assets/Music/Evolving through the cosmos.mp3")
 
 
 func _ready() -> void:
+	if Globals.music and Music.stream != menu_song:
+		Music.stream = menu_song
+		Music.play()
 	create_levels_list()
-		
+	$background.play("default")
 
 func create_levels_list():
 	var dir = DirAccess.open("res://Scenes/levels/")

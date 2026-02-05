@@ -23,6 +23,7 @@ var loaded = false
 
 func _ready():
 	level_ready.emit(nodes)
+	$ParallaxBackground/stars/Sprite2D.play("default")
 
 func _physics_process(delta: float) -> void:
 	if !loaded and game_ctrl:

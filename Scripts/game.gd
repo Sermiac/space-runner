@@ -163,6 +163,7 @@ func handle_ship(area):
 	elif NODES["level_canvas"][2].value >= 99:
 		NODES["player"].stats["status"] = "win"
 		NODES["level_canvas"][4].text = "You Win!!"
+		playing = false
 		
 		await area.win_animation()
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
