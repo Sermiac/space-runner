@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://vfgoxe5y02sv" path="res://Assets/Images/oxigeno.png" id="1_erwcs"]
 [ext_resource type="Script" uid="uid://cjgdm7tigj6aa" path="res://Scripts/dummies.gd" id="1_tih3v"]
-[ext_resource type="PackedScene" uid="uid://peb07osbes1w" path="res://Scenes/props/bottle/oxygen.tscn" id="2_rvhjy"]
+[ext_resource type="PackedScene" uid="uid://peb07osbes1w" path="res://Props/props/bottle/oxygen.tscn" id="2_rvhjy"]
 
 [node name="oxygen" type="Node2D" unique_id=1578344447]
 script = ExtResource("1_tih3v")

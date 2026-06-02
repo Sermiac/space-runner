@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cs4c7m4vid7wf" path="res://Assets/Animations/ship/idle/Spaceship - Idle - sheet.png" id="1_0psef"]
 [ext_resource type="Script" uid="uid://cjgdm7tigj6aa" path="res://Scripts/dummies.gd" id="1_aebd7"]
-[ext_resource type="PackedScene" uid="uid://d3c5ni6qe8dd" path="res://Scenes/props/ship/ship.tscn" id="2_ypamu"]
+[ext_resource type="PackedScene" uid="uid://d3c5ni6qe8dd" path="res://Props/props/ship/ship.tscn" id="2_ypamu"]
 
 [node name="ship" type="Node2D" unique_id=1239761100]
 script = ExtResource("1_aebd7")

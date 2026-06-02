@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjgdm7tigj6aa" path="res://Scripts/dummies.gd" id="1_7cpip"]
 [ext_resource type="Texture2D" uid="uid://mdochs717u5t" path="res://Assets/Animations/enemies/plant/Plant - Idle - L - sheet.png" id="1_it527"]
-[ext_resource type="PackedScene" uid="uid://bmvlavsldxx74" path="res://Scenes/props/enemy/plant.tscn" id="2_j6ivd"]
+[ext_resource type="PackedScene" uid="uid://bmvlavsldxx74" path="res://Props/props/enemy/plant.tscn" id="2_j6ivd"]
 [ext_resource type="Texture2D" uid="uid://bbv8iw5c8c7nq" path="res://Assets/Animations/enemies/plant/Plant - Idle - R - sheet.png" id="3_j6ivd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wrh1"]
@@ -35,6 +35,7 @@ animations = [{
 [node name="plant" type="Node2D" unique_id=567328596 groups=["enemy"]]
 script = ExtResource("1_7cpip")
 prop_scene = ExtResource("2_j6ivd")
+id = &"plant"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1143122145]
 scale = Vector2(4.5, 4.5)

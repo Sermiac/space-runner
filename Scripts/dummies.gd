@@ -2,6 +2,7 @@
 extends Node2D
 
 @export var prop_scene: PackedScene
+@export var id: StringName
 @export_enum("Derecha", "Izquierda") var direction := 1:
 	set(value):
 		direction = value
@@ -18,11 +19,11 @@ func _ready():
 
 func update_visual():
 	if sprite:
-		if self.name == "plant":
+		if self.id == "plant":
 			var anim = "derecha" if direction == 0 else "izquierda"
 			sprite.play(anim)
 		else:
 			sprite.flip_h = true if direction == 0 else false
 			
-	if activate and self.name != "worm":
+	if activate and self.id != "worm":
 		activate.position.x = -61 if direction == 0 else -528

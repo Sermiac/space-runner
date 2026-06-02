@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://peb07osbes1w"]
+[gd_scene format=3 uid="uid://peb07osbes1w"]
 
 [ext_resource type="Texture2D" uid="uid://vfgoxe5y02sv" path="res://Assets/Images/oxigeno.png" id="1_q02ys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5b24"]
+resource_local_to_scene = true
 size = Vector2(40, 74)
 
 [sub_resource type="Animation" id="Animation_3lxa4"]
@@ -67,18 +68,16 @@ _data = {
 &"move": SubResource("Animation_q02ys")
 }
 
-[node name="oxygen" type="Area2D" groups=["bottle"]]
+[node name="oxygen" type="Area2D" unique_id=410568214 groups=["bottle"]]
 collision_layer = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1288262667]
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_q02ys")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1631510612]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_s5b24")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_7fy6m")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=637226632]
+libraries/ = SubResource("AnimationLibrary_7fy6m")

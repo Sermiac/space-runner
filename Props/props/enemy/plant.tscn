@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bmvlavsldxx74"]
 
 [ext_resource type="Script" uid="uid://blpvvabbuqbyd" path="res://Scripts/props/enemies/plant.gd" id="1_neyrp"]
+[ext_resource type="PackedScene" uid="uid://b1efae0hetbgs" path="res://Props/props/enemy/plant/bullet.tscn" id="2_ihh2a"]
 [ext_resource type="Texture2D" uid="uid://cvotqeutfw6d1" path="res://Assets/Animations/enemies/plant/Plant - Attack - R - sheet.png" id="2_n7eyl"]
 [ext_resource type="Texture2D" uid="uid://7sgdls60umya" path="res://Assets/Animations/enemies/plant/Plant - Attack - L - sheet.png" id="3_ytwu6"]
 [ext_resource type="Texture2D" uid="uid://bbv8iw5c8c7nq" path="res://Assets/Animations/enemies/plant/Plant - Idle - R - sheet.png" id="4_yn1o2"]
@@ -954,9 +955,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bk5qg"]
+resource_local_to_scene = true
 size = Vector2(132, 125.125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5in0"]
+resource_local_to_scene = true
 size = Vector2(506, 231)
 
 [sub_resource type="Animation" id="Animation_ekvik"]
@@ -1022,6 +1025,7 @@ _data = {
 
 [node name="plant" type="StaticBody2D" unique_id=750193593 groups=["enemy"]]
 script = ExtResource("1_neyrp")
+BulletScene = ExtResource("2_ihh2a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1379733497]
 z_index = 6
@@ -1038,7 +1042,7 @@ shape = SubResource("RectangleShape2D_bk5qg")
 [node name="Area2D" type="Area2D" parent="." unique_id=593130288]
 
 [node name="Activate" type="CollisionShape2D" parent="Area2D" unique_id=1030437327]
-position = Vector2(-175, -21.5)
+position = Vector2(-186, -21.5)
 shape = SubResource("RectangleShape2D_p5in0")
 debug_color = Color(0.52600485, 0.57056355, 0.14407, 0.41960785)
 

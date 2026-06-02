@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dtydhs2hjf3hn" path="res://Assets/Animations/enemies/worm/Tierra.png" id="1_3jgly"]
 [ext_resource type="Script" uid="uid://cjgdm7tigj6aa" path="res://Scripts/dummies.gd" id="1_lc66m"]
-[ext_resource type="PackedScene" uid="uid://c2jb7mddwtgo2" path="res://Scenes/props/enemy/worm.tscn" id="2_mto7g"]
+[ext_resource type="PackedScene" uid="uid://c2jb7mddwtgo2" path="res://Props/props/enemy/worm.tscn" id="2_mto7g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y001r"]
 atlas = ExtResource("1_3jgly")
@@ -22,7 +22,7 @@ animations = [{
 [node name="worm" type="Node2D" unique_id=931988659]
 script = ExtResource("1_lc66m")
 prop_scene = ExtResource("2_mto7g")
-direction = 1
+id = &"worm"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=176824721]
 scale = Vector2(4.5, 4.5)

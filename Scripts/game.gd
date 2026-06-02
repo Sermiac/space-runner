@@ -153,7 +153,9 @@ func handle_bottle(area):
 	area.call_deferred("queue_free")
 	
 func handle_ship(area):
-	# Lose
+	if NODES["player"].stats["status"].contains("death"):
+		return
+	# Not enough
 	if NODES["level_canvas"][2].value <= 99:
 		NODES["level_canvas"][4].text = "NOT ENOUGH FUEL!!"
 		await get_tree().create_timer(2.0).timeout
@@ -169,6 +171,11 @@ func handle_ship(area):
 		get_tree().call_deferred("change_scene_to_file", "res://Scenes/game.tscn")
 
 func handle_enemy(area):
+	if NODES["player"].stats["status"].contains("death"):
+		return
+	if NODES["player"].receiving_dmg:
+		return
+
 	var dir = (NODES["player"].global_position - area.global_position).normalized()
 	area.player_collided()
 	NODES["player"].dmg_dir = 1 if dir.x >= 0 else -1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqjj6jfet3tr4"]
+[gd_scene format=3 uid="uid://bqjj6jfet3tr4"]
 
 [ext_resource type="Texture2D" uid="uid://qad0b1uxlay4" path="res://Assets/Images/Combustible.png" id="1_wd1og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sskdo"]
+resource_local_to_scene = true
 size = Vector2(42, 75)
 
 [sub_resource type="Animation" id="Animation_3lxa4"]
@@ -67,17 +68,15 @@ _data = {
 &"move": SubResource("Animation_q02ys")
 }
 
-[node name="fuel" type="Area2D" groups=["bottle"]]
+[node name="fuel" type="Area2D" unique_id=2078800832 groups=["bottle"]]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1528619586]
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_wd1og")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1834013804]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_sskdo")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_7fy6m")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1575549410]
+libraries/ = SubResource("AnimationLibrary_7fy6m")

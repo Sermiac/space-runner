@@ -4,6 +4,9 @@ func _ready() -> void:
 	if !Engine.is_embedded_in_editor():
 		$MarginContainer2/HBoxContainer/mode_button.disabled = false
 
+	if !Globals.music:
+		$music_mode.text = "OFF"
+
 func _on_music_button_pressed() -> void:
 	var music = Globals.music
 	if !music:

@@ -1,7 +1,7 @@
 extends Node
 
 var game_speed
-@onready var BulletScene = preload("res://Scenes/props/enemy/plant/bullet.tscn")
+@export var BulletScene: PackedScene
 
 @onready var sprite_anim = $AnimatedSprite2D
 @onready var sensor = $Area2D/Activate
@@ -11,10 +11,10 @@ var new_direction
 func _ready() -> void:
 	if new_direction == "izquierda":
 		sprite_anim.flip_h = false
-		sensor.position.x = -175
+		sensor.position.x = -186
 	elif new_direction == "derecha":
 		sprite_anim.flip_h = true
-		sensor.position.x = 175
+		sensor.position.x = 191
 	
 	var anim = "idle_" + str(new_direction)
 	sprite_anim.play(anim)

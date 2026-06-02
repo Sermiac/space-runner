@@ -99,7 +99,7 @@ func movement(delta):
 		wlk_snd.play()
 	
 	# MOVEMENT
-	var dir = Input.get_axis("ui_left", "ui_right")
+	var dir = Input.get_axis("left", "right")
 	if dir == 0.0 and is_on_floor():
 		player_anims_manager("idle")
 		wlk_snd.stop()

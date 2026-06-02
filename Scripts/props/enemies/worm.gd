@@ -27,8 +27,13 @@ func deactivate():
 	$AnimationPlayer.play("deactive")
 	$AnimatedSprite2D.play("worm_in")
 	
-	await $AnimationPlayer.animation_finished
+	# deactivate kill first
+	var anim_time = $AnimationPlayer.get_animation("deactive").length * 0.5
+	await get_tree().create_timer(anim_time/game_speed).timeout
 	$kill.call_deferred("set_disabled", true)
+	
+	# change anim second
+	await $AnimationPlayer.animation_finished
 	$AnimatedSprite2D.play("worm_idle")
 	
 	await get_tree().create_timer(2.0/game_speed).timeout

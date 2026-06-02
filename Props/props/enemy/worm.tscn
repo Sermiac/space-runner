@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c2jb7mddwtgo2"]
+[gd_scene format=3 uid="uid://c2jb7mddwtgo2"]
 
 [ext_resource type="Script" uid="uid://dseupcb6u6q42" path="res://Scripts/props/enemies/worm.gd" id="1_c7jp6"]
 [ext_resource type="Texture2D" uid="uid://2voset2as7r" path="res://Assets/Animations/enemies/worm/Worm - Idle - sheet.png" id="2_3pxuu"]
@@ -316,9 +316,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7jp6"]
+resource_local_to_scene = true
 size = Vector2(45.33658, 54.873604)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3pxuu"]
+resource_local_to_scene = true
 radius = 65.0
 height = 130.0
 
@@ -434,25 +436,23 @@ _data = {
 &"deactive": SubResource("Animation_eo1v0")
 }
 
-[node name="worm" type="Area2D" groups=["enemy"]]
+[node name="worm" type="Area2D" unique_id=923229928 groups=["enemy"]]
 script = ExtResource("1_c7jp6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1741241753]
 scale = Vector2(4.5, 4.5)
 sprite_frames = SubResource("SpriteFrames_3pxuu")
 animation = &"worm_idle_out"
 
-[node name="activate" type="CollisionShape2D" parent="."]
+[node name="activate" type="CollisionShape2D" parent="." unique_id=376823894]
 position = Vector2(0, -25)
 scale = Vector2(6.131913, 5.831583)
 shape = SubResource("RectangleShape2D_c7jp6")
 debug_color = Color(0.9966753, 0.8374025, 0.58439094, 0.41960785)
 
-[node name="kill" type="CollisionShape2D" parent="."]
+[node name="kill" type="CollisionShape2D" parent="." unique_id=888676713]
 shape = SubResource("CapsuleShape2D_3pxuu")
 disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_dhxej")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=829053559]
+libraries/ = SubResource("AnimationLibrary_dhxej")

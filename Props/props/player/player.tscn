@@ -1294,7 +1294,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wrm1d"]
 radius = 28.0
-height = 156.0
+height = 140.0
 
 [sub_resource type="Animation" id="Animation_ee4lj"]
 length = 0.001
@@ -1349,12 +1349,12 @@ script = ExtResource("1_8erm5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=429033785]
 light_mask = 2
-scale = Vector2(4.5, 4.5)
+scale = Vector2(4.3, 4.3)
 sprite_frames = SubResource("SpriteFrames_dsuda")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2028957586]
-position = Vector2(0, 2)
+position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_wrm1d")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=745321365]

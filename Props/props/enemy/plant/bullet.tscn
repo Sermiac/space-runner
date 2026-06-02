@@ -1,19 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1efae0hetbgs"]
+[gd_scene format=3 uid="uid://b1efae0hetbgs"]
 
 [ext_resource type="Script" uid="uid://c0j3nlhanypyw" path="res://Scripts/props/enemies/plant/bullet.gd" id="1_sckii"]
 [ext_resource type="Texture2D" uid="uid://bvriesqyxq1me" path="res://Assets/Animations/enemies/plant/Plant - Projectile - sheet.png" id="2_ngrew"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ngrew"]
+resource_local_to_scene = true
 radius = 9.0
 height = 34.0
 
-[node name="bullet" type="Area2D" groups=["bullet", "enemy"]]
+[node name="bullet" type="Area2D" unique_id=1987930797 groups=["bullet", "enemy"]]
 script = ExtResource("1_sckii")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2105674970]
 scale = Vector2(4.5, 4.5)
 texture = ExtResource("2_ngrew")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=631329453]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ngrew")
